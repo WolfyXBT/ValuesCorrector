@@ -192,6 +192,347 @@
             margin-bottom: 0px;
         }
         
+        /* 加号按钮样式 */
+        .add-btn {
+            background: none !important;
+            border: none !important;
+            padding: 0 !important;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            opacity: 0.8;
+        }
+        
+        .add-btn svg {
+            transition: all 0.3s ease;
+            fill: url(#gradient);
+        }
+        
+        .add-btn:hover {
+            transform: translateY(-2px);
+            opacity: 1;
+            filter: drop-shadow(0 4px 10px rgba(102, 126, 234, 0.3));
+        }
+        
+        .add-btn:hover svg {
+            fill: url(#gradientHover);
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .emoji-modal-content {
+            max-width: 500px;
+        }
+        
+        .modal-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid #e1e8ff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .modal-header h2, .modal-header h3 {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            opacity: 0.7;
+        }
+        
+        .modal-body {
+            padding: 25px;
+        }
+        
+        /* 表单样式 */
+        .add-form, .custom-list {
+            margin-bottom: 25px;
+        }
+        
+        .add-form h3, .custom-list h3 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e1e8ff;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .price-input {
+            display: flex;
+            gap: 10px;
+        }
+        
+        #customEmoji {
+            cursor: pointer;
+        }
+        
+        #customEmoji:hover {
+            border-color: #667eea;
+        }
+        
+        .price-input input {
+            flex: 2;
+        }
+        
+        .price-input select {
+            flex: 1;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(145deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #666;
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        /* 项目列表样式 */
+        .items-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .custom-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #e1e8ff;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-item:hover {
+            background: rgba(102, 126, 234, 0.05);
+            border-color: #667eea;
+        }
+        
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+        
+        .item-emoji {
+            font-size: 20px;
+        }
+        
+        .item-details {
+            flex: 1;
+        }
+        
+        .item-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .item-price {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .item-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .item-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .edit-btn {
+            background: #ffa726;
+            color: white;
+        }
+        
+        .edit-btn:hover {
+            background: #ff9800;
+        }
+        
+        .delete-btn {
+            background: #ef5350;
+            color: white;
+        }
+        
+        .delete-btn:hover {
+            background: #f44336;
+        }
+        
+        /* Emoji选择器样式 */
+        .emoji-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+        
+        .emoji-category {
+            padding: 8px 12px;
+            border: 2px solid #e1e8ff;
+            border-radius: 20px;
+            background: white;
+            color: #667eea;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .emoji-category.active, .emoji-category:hover {
+            background: linear-gradient(145deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .emoji-item {
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .emoji-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: scale(1.1);
+        }
+        
+        /* Toast 提示样式 */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(145deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            max-width: 300px;
+            word-wrap: break-word;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
         /* 移动端响应式设计 */
         @media screen and (max-width: 768px) {
             body {
@@ -241,6 +582,35 @@
                 padding: 10px 12px;
                 font-size: 16px;
                 text-align: right;
+            }
+            
+            /* 移动端模态框样式 */
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                max-height: 85vh;
+            }
+            
+            .emoji-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            
+            .emoji-categories {
+                gap: 5px;
+            }
+            
+            .emoji-category {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+            
+            /* 移动端toast样式 */
+            .toast {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+                font-size: 13px;
             }
         }
         
@@ -508,6 +878,11 @@
             </defs>
         </svg>
         
+        <button id="manageCustomBtn" class="author add-btn" title="管理自定义项目">
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+            </svg>
+        </button>
         <a href="https://x.com/Wolfy_XBT" target="_blank" class="author">
             <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -520,14 +895,444 @@
         </a>
     </div>
 
+    <!-- 自定义项目管理模态框 -->
+    <div id="customModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>管理自定义项目</h2>
+                <span class="close">&times;</span>
+            </div>
+            
+            <div class="modal-body">
+                <!-- 添加新项目表单 -->
+                <div class="add-form">
+                    <h3>添加新项目</h3>
+                    <div class="form-group">
+                        <label>项目名称:</label>
+                        <input type="text" id="customName" placeholder="输入项目名称" maxlength="20">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>选择表情:</label>
+                        <input type="text" id="customEmoji" placeholder="点击这里选择表情" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>基准价格:</label>
+                        <div class="price-input">
+                            <input type="number" id="customPrice" placeholder="0.00" min="0" step="0.01">
+                            <select id="customBaseCurrency">
+                                <option value="USD">🇺🇸 USD</option>
+                                <option value="CNY" selected>🇨🇳 CNY</option>
+                                <option value="JPY">🇯🇵 JPY</option>
+                                <option value="EUR">🇪🇺 EUR</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="addCustomBtn" class="btn-primary">添加项目</button>
+                        <button type="button" id="cancelEditBtn" class="btn-secondary" style="display: none;">取消编辑</button>
+                    </div>
+                </div>
+                
+                <!-- 已有项目列表 -->
+                <div class="custom-list">
+                    <h3>已有项目</h3>
+                    <div id="customItemsList" class="items-list">
+                        <!-- 动态生成的项目列表 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emoji选择器模态框 -->
+    <div id="emojiModal" class="modal">
+        <div class="modal-content emoji-modal-content">
+            <div class="modal-header">
+                <h3>选择表情</h3>
+                <span class="close emoji-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="emoji-categories">
+                    <button class="emoji-category active" data-category="food">🍔 食物</button>
+                    <button class="emoji-category" data-category="electronics">📱 电子</button>
+                    <button class="emoji-category" data-category="transport">🚗 交通</button>
+                    <button class="emoji-category" data-category="lifestyle">👕 生活</button>
+                    <button class="emoji-category" data-category="sports">⚽ 运动</button>
+                    <button class="emoji-category" data-category="symbols">💰 符号</button>
+                </div>
+                <div class="emoji-grid" id="emojiGrid">
+                    <!-- 动态生成的emoji列表 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         let rates = {};
         let updating = false;
         let lastInputField = 1; // 记录最后一次输入数字的栏位
+        let customItems = {}; // 自定义项目存储
+        let currentEditingItem = null; // 当前编辑的项目
+        
+        // Emoji分类数据
+        const emojiCategories = {
+            food: ['🍔', '🍕', '🍟', '🌮', '🥗', '🍜', '🍲', '🥘', '🍱', '🍙', '🍘', '🍚', '🍛', '🍤', '🍗', '🥓', '🥩', '🍖', '🌭', '🥪', '🧋', '☕', '🥤', '🍺', '🍻', '🥂', '🍷', '🍸', '🍹', '🧊', '🍰', '🎂', '🧁', '🍮', '🍭', '🍬', '🍫', '🍿', '🍩', '🍪'],
+            electronics: ['📱', '💻', '⌚', '🖥️', '⌨️', '🖱️', '🖨️', '📷', '📹', '📺', '📻', '🎮', '🕹️', '💾', '💿', '📀', '🔌', '🔋', '💡', '🔦', '📡', '📞', '☎️', '📟', '📠', '💯', '🔍', '🔎', '📊', '📈', '📉', '💰', '💳', '💎', '⚡'],
+            transport: ['🚗', '🚙', '🚐', '🚛', '🚚', '🚨', '🚔', '🚍', '🚌', '🚎', '🏎️', '🚓', '🚑', '🚒', '🚕', '🛻', '🚜', '🏍️', '🛵', '🚲', '🛴', '✈️', '🛫', '🛬', '🚁', '🚀', '🛸', '🚢', '⛵', '🚤', '🛥️', '⛴️', '🚂', '🚃', '🚄', '🚅', '🚆', '🚇', '🚈', '🚉'],
+            lifestyle: ['👕', '👖', '👗', '👔', '🧥', '👚', '👘', '🥻', '👙', '🩱', '👠', '👡', '👢', '👞', '👟', '🥿', '🧦', '🧤', '🎒', '👜', '👛', '💼', '🧳', '👑', '👒', '🎩', '🧢', '⛑️', '💄', '💍', '💎', '🔑', '🕶️', '👓', '🥽', '⌚', '📿', '💻', '📱', '🏠', '🏡'],
+            sports: ['⚽', '🏀', '🏈', '⚾', '🥎', '🎾', '🏐', '🏉', '🥏', '🎱', '🪀', '🏓', '🏸', '🏒', '🏑', '🥍', '🏏', '🪃', '🥊', '🥋', '🎽', '🛹', '🛷', '⛸️', '🥌', '🎿', '⛷️', '🏂', '🪂', '🏋️', '🤸', '🤾', '⛹️', '🤺', '🤼', '🧘', '🏃', '🚴', '🏊', '🏄'],
+            symbols: ['💰', '💵', '💴', '💶', '💷', '🪙', '💳', '💎', '⚖️', '🏆', '🥇', '🥈', '🥉', '🏅', '🎖️', '📊', '📈', '📉', '💹', '💲', '🔢', '🧮', '⭐', '🌟', '⚡', '🔥', '💯', '✨', '🎯', '🎪', '🎭', '🎨', '🎬', '🎵', '🎶', '🎤', '🎧', '🎼', '🎹', '🥁']
+        };
+        
+        // 初始化Emoji选择器
+        function initEmojiPicker() {
+            const emojiGrid = document.getElementById('emojiGrid');
+            const categoryButtons = document.querySelectorAll('.emoji-category');
+            
+            // 默认显示食物分类
+            showEmojiCategory('food');
+            
+            // 分类按钮事件
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    showEmojiCategory(button.dataset.category);
+                });
+            });
+        }
+        
+        // 显示指定分类的emoji
+        function showEmojiCategory(category) {
+            const emojiGrid = document.getElementById('emojiGrid');
+            const emojis = emojiCategories[category] || [];
+            
+            emojiGrid.innerHTML = '';
+            emojis.forEach(emoji => {
+                const emojiItem = document.createElement('div');
+                emojiItem.className = 'emoji-item';
+                emojiItem.textContent = emoji;
+                emojiItem.addEventListener('click', () => selectEmoji(emoji));
+                emojiGrid.appendChild(emojiItem);
+            });
+        }
+        
+        // 选择emoji
+        function selectEmoji(emoji) {
+            document.getElementById('customEmoji').value = emoji;
+            closeEmojiModal();
+        }
+        
+        // 打开emoji选择器
+        function openEmojiModal() {
+            document.getElementById('emojiModal').style.display = 'block';
+        }
+        
+        // 关闭emoji选择器
+        function closeEmojiModal() {
+            document.getElementById('emojiModal').style.display = 'none';
+        }
+        
+        // Toast 提示功能
+        function showToast(message) {
+            // 移除已存在的toast
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            // 创建新的toast
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // 显示动画
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+            
+            // 3秒后自动消失
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.remove();
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // 自定义项目管理功能
+        function loadCustomItems() {
+            const saved = localStorage.getItem('customItems');
+            if (saved) {
+                try {
+                    customItems = JSON.parse(saved);
+                } catch (error) {
+                    console.error('加载自定义项目失败:', error);
+                    customItems = {};
+                }
+            }
+            renderCustomItemsList();
+        }
+        
+        function saveCustomItems() {
+            localStorage.setItem('customItems', JSON.stringify(customItems));
+        }
+        
+        function generateCustomId() {
+            const ids = Object.keys(customItems).map(id => parseInt(id.replace('CUSTOM_', ''))).filter(num => !isNaN(num));
+            const maxId = ids.length > 0 ? Math.max(...ids) : 0;
+            return `CUSTOM_${String(maxId + 1).padStart(3, '0')}`;
+        }
+        
+        function addCustomItem() {
+            const name = document.getElementById('customName').value.trim();
+            const emoji = document.getElementById('customEmoji').value.trim();
+            const price = parseFloat(document.getElementById('customPrice').value);
+            const baseCurrency = document.getElementById('customBaseCurrency').value;
+            
+            // 验证输入
+            if (!name) {
+                showToast('请输入项目名称');
+                return;
+            }
+            if (!emoji) {
+                showToast('请选择表情');
+                return;
+            }
+            if (!price || price <= 0) {
+                showToast('请输入有效的价格');
+                return;
+            }
+            
+            // 检查重复名称
+            const existingNames = Object.values(customItems).map(item => item.name.toLowerCase());
+            if (!currentEditingItem && existingNames.includes(name.toLowerCase())) {
+                showToast('项目名称已存在，请使用其他名称');
+                return;
+            }
+            
+            let itemId;
+            if (currentEditingItem) {
+                itemId = currentEditingItem;
+            } else {
+                itemId = generateCustomId();
+            }
+            
+            customItems[itemId] = {
+                name: name,
+                emoji: emoji,
+                basePrice: price,
+                baseCurrency: baseCurrency
+            };
+            
+            saveCustomItems();
+            renderCustomItemsList();
+            updateAllSelectOptions();
+            
+            // 重新加载汇率以包含新的自定义项目
+            loadRates().then(() => {
+                // 如果有输入数据，重新计算汇率
+                const hasData = Array.from({length: 6}, (_, i) => i + 1).some(i => 
+                    document.getElementById(`amount${i}`).value.trim() !== ''
+                );
+                if (hasData) {
+                    convert(lastInputField);
+                }
+            });
+            
+            clearForm();
+            
+            if (currentEditingItem) {
+                showToast(`${customItems[currentEditingItem].emoji} ${customItems[currentEditingItem].name} 已更新`);
+                currentEditingItem = null;
+                document.getElementById('addCustomBtn').textContent = '添加项目';
+                document.getElementById('cancelEditBtn').style.display = 'none';
+            } else {
+                showToast(`${customItems[itemId].emoji} ${customItems[itemId].name} 已添加`);
+            }
+        }
+        
+        function editCustomItem(itemId) {
+            const item = customItems[itemId];
+            if (!item) return;
+            
+            document.getElementById('customName').value = item.name;
+            document.getElementById('customEmoji').value = item.emoji;
+            document.getElementById('customPrice').value = item.basePrice;
+            document.getElementById('customBaseCurrency').value = item.baseCurrency;
+            
+            currentEditingItem = itemId;
+            document.getElementById('addCustomBtn').textContent = '更新项目';
+            document.getElementById('cancelEditBtn').style.display = 'inline-block';
+        }
+        
+        function deleteCustomItem(itemId) {
+            const item = customItems[itemId];
+            if (!item) return;
+            
+            if (confirm(`确定要删除 "${item.emoji} ${item.name}" 吗？`)) {
+                delete customItems[itemId];
+                saveCustomItems();
+                renderCustomItemsList();
+                updateAllSelectOptions();
+                
+                // 重新加载汇率以移除删除的自定义项目
+                loadRates().then(() => {
+                    // 如果有输入数据，重新计算汇率
+                    const hasData = Array.from({length: 6}, (_, i) => i + 1).some(i => 
+                        document.getElementById(`amount${i}`).value.trim() !== ''
+                    );
+                    if (hasData) {
+                        convert(lastInputField);
+                    }
+                });
+                
+                showToast(`${item.emoji} ${item.name} 已删除`);
+            }
+        }
+        
+        function cancelEdit() {
+            clearForm();
+            currentEditingItem = null;
+            document.getElementById('addCustomBtn').textContent = '添加项目';
+            document.getElementById('cancelEditBtn').style.display = 'none';
+        }
+        
+        function clearForm() {
+            document.getElementById('customName').value = '';
+            document.getElementById('customEmoji').value = '';
+            document.getElementById('customPrice').value = '';
+            document.getElementById('customBaseCurrency').value = 'CNY';
+        }
+        
+        function renderCustomItemsList() {
+            const container = document.getElementById('customItemsList');
+            
+            if (Object.keys(customItems).length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">暂无自定义项目</p>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            Object.keys(customItems).forEach(itemId => {
+                const item = customItems[itemId];
+                const itemElement = document.createElement('div');
+                itemElement.className = 'custom-item';
+                itemElement.innerHTML = `
+                    <div class="item-info">
+                        <div class="item-emoji">${item.emoji}</div>
+                        <div class="item-details">
+                            <div class="item-name">${item.name}</div>
+                            <div class="item-price">${item.basePrice} ${item.baseCurrency}</div>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="item-btn edit-btn" onclick="editCustomItem('${itemId}')">编辑</button>
+                        <button class="item-btn delete-btn" onclick="deleteCustomItem('${itemId}')">删除</button>
+                    </div>
+                `;
+                container.appendChild(itemElement);
+            });
+        }
+        
+        // 模态框控制
+        function openCustomModal() {
+            document.getElementById('customModal').style.display = 'block';
+            loadCustomItems();
+        }
+        
+        function closeCustomModal() {
+            document.getElementById('customModal').style.display = 'none';
+            cancelEdit();
+        }
+        
+        // 动态更新所有select选项
+        function updateAllSelectOptions() {
+            for (let i = 1; i <= 6; i++) {
+                updateSelectOptions(`currency${i}`);
+            }
+        }
+        
+        function updateSelectOptions(selectId) {
+            const select = document.getElementById(selectId);
+            if (!select) return;
+            
+            const currentValue = select.value;
+            
+            // 构建新的选项HTML
+            let optionsHTML = '';
+            
+            // 加密货币
+            optionsHTML += '<optgroup label="加密货币">';
+            optionsHTML += '<option value="BTC">🟠 BTC</option>';
+            optionsHTML += '<option value="ETH">♦️ ETH</option>';
+            optionsHTML += '<option value="SOL">🟣 SOL</option>';
+            optionsHTML += '<option value="BNB">🟡 BNB</option>';
+            optionsHTML += '<option value="OKB">⚫ OKB</option>';
+            optionsHTML += '</optgroup>';
+            
+            // 法币
+            optionsHTML += '<optgroup label="法币">';
+            optionsHTML += '<option value="USD">🇺🇸 USD</option>';
+            optionsHTML += '<option value="CNY">🇨🇳 CNY</option>';
+            optionsHTML += '<option value="JPY">🇯🇵 JPY</option>';
+            optionsHTML += '<option value="KRW">🇰🇷 KRW</option>';
+            optionsHTML += '<option value="SGD">🇸🇬 SGD</option>';
+            optionsHTML += '<option value="AED">🇦🇪 AED</option>';
+            optionsHTML += '<option value="HKD">🇭🇰 HKD</option>';
+            optionsHTML += '<option value="MYR">🇲🇾 MYR</option>';
+            optionsHTML += '</optgroup>';
+            
+            // 实物
+            optionsHTML += '<optgroup label="实物">';
+            optionsHTML += '<option value="ZHUJIAO">🍚 猪脚饭</option>';
+            optionsHTML += '<option value="KFC">🍗 KFC</option>';
+            optionsHTML += '<option value="IN11">💃 in11嫩模</option>';
+            optionsHTML += '<option value="IPHONE17">📱 iPhone17</option>';
+            optionsHTML += '<option value="MACBOOK">💻 MacBook Air</option>';
+            optionsHTML += '<option value="ROLEX">⌚ Rolex</option>';
+            optionsHTML += '<option value="XIAOMISU7">🏎️ Xiaomi Su7</option>';
+            optionsHTML += '<option value="PORSCHE">🏎️ Porsche 718</option>';
+            optionsHTML += '<option value="FERRARI">🏎️ Ferrari Roma</option>';
+            optionsHTML += '</optgroup>';
+            
+            // 自定义项目
+            if (Object.keys(customItems).length > 0) {
+                optionsHTML += '<optgroup label="自定义">';
+                Object.keys(customItems).forEach(itemId => {
+                    const item = customItems[itemId];
+                    optionsHTML += `<option value="${itemId}">${item.emoji} ${item.name}</option>`;
+                });
+                optionsHTML += '</optgroup>';
+            }
+            
+            select.innerHTML = optionsHTML;
+            
+            // 恢复之前的选择值，如果该值仍然存在的话
+            if (currentValue && select.querySelector(`option[value="${currentValue}"]`)) {
+                select.value = currentValue;
+            }
+        }
         
         // 获取真实汇率
         async function loadRates() {
             try {
+                // 确保自定义项目已加载
+                const saved = localStorage.getItem('customItems');
+                if (saved) {
+                    try {
+                        customItems = JSON.parse(saved);
+                    } catch (error) {
+                        console.error('加载自定义项目失败:', error);
+                        customItems = {};
+                    }
+                }
                 // 获取加密货币价格 (USD)
                 const cryptoResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,binancecoin,okb&vs_currencies=usd');
                 const cryptoData = await cryptoResponse.json();
@@ -545,6 +1350,8 @@
                 const currencies = ['CNY', 'JPY', 'KRW', 'SGD', 'AED', 'HKD', 'MYR'];
                 const cryptos = ['BTC', 'ETH', 'SOL', 'BNB', 'OKB'];
                 const products = ['ZHUJIAO', 'KFC', 'IN11', 'IPHONE17', 'FERRARI', 'PORSCHE', 'XIAOMISU7', 'ROLEX', 'MACBOOK'];
+                const customItemIds = Object.keys(customItems);
+                
                 const cryptoPrices = { BTC: btcPrice, ETH: ethPrice, SOL: solPrice, BNB: bnbPrice, OKB: okbPrice };
                 const productPrices = { 
                     ZHUJIAO: 20 / fiatData.rates.CNY,       // 20 CNY 转换为 USD
@@ -558,10 +1365,23 @@
                     MACBOOK: 999                            // 999 USD
                 };
                 
+                // 计算自定义项目的USD价格
+                const customPrices = {};
+                Object.keys(customItems).forEach(itemId => {
+                    const item = customItems[itemId];
+                    if (item.baseCurrency === 'USD') {
+                        customPrices[itemId] = item.basePrice;
+                    } else if (fiatData.rates[item.baseCurrency]) {
+                        customPrices[itemId] = item.basePrice / fiatData.rates[item.baseCurrency];
+                    } else {
+                        customPrices[itemId] = item.basePrice / 7.1; // 默认按CNY计算
+                    }
+                });
+                
                 rates = {};
                 
                 // 构建汇率矩阵
-                const allCurrencies = [...cryptos, 'USD', ...currencies, ...products];
+                const allCurrencies = [...cryptos, 'USD', ...currencies, ...products, ...customItemIds];
                 allCurrencies.forEach(from => {
                     rates[from] = {};
                     allCurrencies.forEach(to => {
@@ -612,6 +1432,33 @@
                         } else if (products.includes(from) && products.includes(to)) {
                             // 产品之间
                             rates[from][to] = productPrices[from] / productPrices[to];
+                        } else if (customItemIds.includes(from) && to === 'USD') {
+                            // 自定义项目到美元
+                            rates[from][to] = customPrices[from];
+                        } else if (from === 'USD' && customItemIds.includes(to)) {
+                            // 美元到自定义项目
+                            rates[from][to] = 1 / customPrices[to];
+                        } else if (customItemIds.includes(from) && currencies.includes(to)) {
+                            // 自定义项目到其他法币
+                            rates[from][to] = customPrices[from] * fiatData.rates[to];
+                        } else if (currencies.includes(from) && customItemIds.includes(to)) {
+                            // 其他法币到自定义项目
+                            rates[from][to] = 1 / (customPrices[to] * fiatData.rates[from]);
+                        } else if (cryptos.includes(from) && customItemIds.includes(to)) {
+                            // 加密货币到自定义项目
+                            rates[from][to] = cryptoPrices[from] / customPrices[to];
+                        } else if (customItemIds.includes(from) && cryptos.includes(to)) {
+                            // 自定义项目到加密货币
+                            rates[from][to] = customPrices[from] / cryptoPrices[to];
+                        } else if (products.includes(from) && customItemIds.includes(to)) {
+                            // 固定产品到自定义项目
+                            rates[from][to] = productPrices[from] / customPrices[to];
+                        } else if (customItemIds.includes(from) && products.includes(to)) {
+                            // 自定义项目到固定产品
+                            rates[from][to] = customPrices[from] / productPrices[to];
+                        } else if (customItemIds.includes(from) && customItemIds.includes(to)) {
+                            // 自定义项目之间
+                            rates[from][to] = customPrices[from] / customPrices[to];
                         }
                     });
                 });
@@ -619,6 +1466,18 @@
                 console.log('汇率加载成功:', rates);
             } catch (error) {
                 console.error('汇率加载失败:', error);
+                
+                // 确保在备用汇率情况下也加载自定义项目
+                const saved = localStorage.getItem('customItems');
+                if (saved) {
+                    try {
+                        customItems = JSON.parse(saved);
+                    } catch (error) {
+                        console.error('加载自定义项目失败:', error);
+                        customItems = {};
+                    }
+                }
+                
                 // 使用备用汇率
                 rates = {
                     BTC: { USD: 65000, ETH: 24.5, SOL: 300, BNB: 100, OKB: 1444, CNY: 460000, JPY: 9500000, KRW: 87000000, SGD: 87000, AED: 240000, HKD: 507000, MYR: 280000, ZHUJIAO: 23000, KFC: 9200, IN11: 153.3, IPHONE17: 81.35, FERRARI: 0.26, PORSCHE: 0.83, XIAOMISU7: 2.13, ROLEX: 8.15, MACBOOK: 65.07 },
@@ -644,27 +1503,57 @@
                     ROLEX: { USD: 7958, BTC: 0.122, ETH: 3.00, SOL: 36.17, BNB: 12.24, CNY: 56500, JPY: 1170026, KRW: 10660000, SGD: 10668, AED: 29229, HKD: 62072, MYR: 34220, ZHUJIAO: 2825, KFC: 1130, IN11: 18.83, IPHONE17: 9.96, FERRARI: 0.032, PORSCHE: 0.103, XIAOMISU7: 0.262, MACBOOK: 7.97 },
                     MACBOOK: { USD: 999, BTC: 0.0154, ETH: 0.377, SOL: 4.54, BNB: 1.54, CNY: 7092, JPY: 146853, KRW: 1338000, SGD: 1339, AED: 3667, HKD: 7792, MYR: 4297, ZHUJIAO: 355, KFC: 142, IN11: 2.36, IPHONE17: 1.25, FERRARI: 0.0041, PORSCHE: 0.013, XIAOMISU7: 0.033, ROLEX: 0.126 }
                 };
+                
+                // 即使在备用汇率情况下，也要处理自定义项目
+                if (Object.keys(customItems).length > 0) {
+                    const customItemIds = Object.keys(customItems);
+                    const allCurrencies = ['BTC', 'ETH', 'SOL', 'BNB', 'OKB', 'USD', 'CNY', 'JPY', 'KRW', 'SGD', 'AED', 'HKD', 'MYR', 'ZHUJIAO', 'KFC', 'IN11', 'IPHONE17', 'FERRARI', 'PORSCHE', 'XIAOMISU7', 'ROLEX', 'MACBOOK', ...customItemIds];
+                    
+                    // 计算自定义项目的USD价格
+                    const customPrices = {};
+                    Object.keys(customItems).forEach(itemId => {
+                        const item = customItems[itemId];
+                        if (item.baseCurrency === 'USD') {
+                            customPrices[itemId] = item.basePrice;
+                        } else {
+                            customPrices[itemId] = item.basePrice / 7.1; // 使用固定CNY汇率
+                        }
+                    });
+                    
+                    // 为每个自定义项目添加汇率
+                    customItemIds.forEach(customId => {
+                        if (!rates[customId]) rates[customId] = {};
+                        
+                        allCurrencies.forEach(currency => {
+                            if (customId === currency) {
+                                rates[customId][currency] = 1;
+                            } else if (rates[currency]) {
+                                if (currency === 'USD') {
+                                    rates[customId][currency] = customPrices[customId];
+                                    rates[currency][customId] = 1 / customPrices[customId];
+                                } else if (rates[currency]['USD']) {
+                                    rates[customId][currency] = customPrices[customId] / rates[currency]['USD'];
+                                    rates[currency][customId] = rates[currency]['USD'] / customPrices[customId];
+                                }
+                            }
+                        });
+                        
+                        // 自定义项目之间的汇率
+                        customItemIds.forEach(otherId => {
+                            if (customId !== otherId) {
+                                rates[customId][otherId] = customPrices[customId] / customPrices[otherId];
+                            }
+                        });
+                    });
+                }
+            }
+            
+            // 确保汇率加载后更新所有select选项
+            if (typeof updateAllSelectOptions === 'function') {
+                updateAllSelectOptions();
             }
         }
         
-        // 先恢复状态，再加载API
-        restoreState();
-        
-        // 页面加载时获取汇率，加载完成后重新计算
-        loadRates().then(() => {
-            // API加载完成后，如果有数据就重新计算一次以获得最新汇率
-            const hasData = Array.from({length: 6}, (_, i) => i + 1).some(i => 
-                document.getElementById(`amount${i}`).value.trim() !== ''
-            );
-            if (hasData) {
-                // API加载完成后，以最后输入的栏位为基准重新计算
-                const lastAmount = document.getElementById(`amount${lastInputField}`).value.trim();
-                if (lastAmount !== '') {
-                    console.log(`API加载完成，以栏位${lastInputField}为基准重新计算最新汇率`);
-                    convert(lastInputField);
-                }
-            }
-        });
         
         // 保存状态到本地存储
         function saveState() {
@@ -679,6 +1568,12 @@
         
         // 从本地存储恢复状态
         function restoreState() {
+            // 首先加载自定义项目
+            loadCustomItems();
+            
+            // 更新所有select选项以包含自定义项目
+            updateAllSelectOptions();
+            
             const savedState = localStorage.getItem('valueConverterState');
             if (savedState) {
                 try {
@@ -688,7 +1583,11 @@
                             document.getElementById(`amount${i}`).value = state[`amount${i}`];
                         }
                         if (state[`currency${i}`]) {
-                            document.getElementById(`currency${i}`).value = state[`currency${i}`];
+                            const select = document.getElementById(`currency${i}`);
+                            // 确保选项存在才设置值
+                            if (select.querySelector(`option[value="${state[`currency${i}`]}"]`)) {
+                                select.value = state[`currency${i}`];
+                            }
                         }
                     }
                     // 恢复最后输入的栏位
@@ -745,18 +1644,96 @@
             updating = false;
         }
         
-        for (let i = 1; i <= 6; i++) {
-            document.getElementById(`amount${i}`).addEventListener('input', () => {
-                lastInputField = i; // 更新最后输入的栏位
-                convert(i);
-                saveState(); // 保存状态
-            });
-            document.getElementById(`currency${i}`).addEventListener('change', () => {
-                // 货币选择变更时，以最后输入的栏位为基准重新计算
-                convert(lastInputField);
-                saveState(); // 保存状态
+        // 初始化应用
+        function initApp() {
+            // 初始化emoji选择器
+            initEmojiPicker();
+            
+            // 先恢复状态，再加载API
+            restoreState();
+            
+            // 添加事件监听器
+            setupEventListeners();
+            
+            // 页面加载时获取汇率，加载完成后重新计算
+            loadRates().then(() => {
+                // API加载完成后，如果有数据就重新计算一次以获得最新汇率
+                const hasData = Array.from({length: 6}, (_, i) => i + 1).some(i => 
+                    document.getElementById(`amount${i}`).value.trim() !== ''
+                );
+                if (hasData) {
+                    // API加载完成后，以最后输入的栏位为基准重新计算
+                    const lastAmount = document.getElementById(`amount${lastInputField}`).value.trim();
+                    if (lastAmount !== '') {
+                        console.log(`API加载完成，以栏位${lastInputField}为基准重新计算最新汇率`);
+                        convert(lastInputField);
+                    }
+                }
             });
         }
+        
+        function setupEventListeners() {
+            // 转换器输入框事件
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById(`amount${i}`).addEventListener('input', () => {
+                    lastInputField = i; // 更新最后输入的栏位
+                    convert(i);
+                    saveState(); // 保存状态
+                });
+                document.getElementById(`currency${i}`).addEventListener('change', () => {
+                    // 货币选择变更时，以最后输入的栏位为基准重新计算
+                    convert(lastInputField);
+                    saveState(); // 保存状态
+                });
+            }
+            
+            // 管理自定义项目按钮
+            document.getElementById('manageCustomBtn').addEventListener('click', openCustomModal);
+            
+            // 模态框关闭按钮
+            document.querySelector('.close').addEventListener('click', closeCustomModal);
+            document.querySelector('.emoji-close').addEventListener('click', closeEmojiModal);
+            
+            // 点击模态框背景关闭
+            document.getElementById('customModal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('customModal')) {
+                    closeCustomModal();
+                }
+            });
+            document.getElementById('emojiModal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('emojiModal')) {
+                    closeEmojiModal();
+                }
+            });
+            
+            // emoji选择器输入框
+            document.getElementById('customEmoji').addEventListener('click', openEmojiModal);
+            
+            // 添加/更新自定义项目按钮
+            document.getElementById('addCustomBtn').addEventListener('click', addCustomItem);
+            
+            // 取消编辑按钮
+            document.getElementById('cancelEditBtn').addEventListener('click', cancelEdit);
+            
+            // 表单验证 - 阻止Enter键提交
+            document.getElementById('customName').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addCustomItem();
+                }
+            });
+            document.getElementById('customPrice').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addCustomItem();
+                }
+            });
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initApp();
+        });
         
     </script>
     </div>
