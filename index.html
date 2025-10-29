@@ -473,8 +473,8 @@
             font-style: italic;
         }
         
-        /* 添加到主屏幕按钮样式 */
-        .add-to-home-btn {
+        /* 添加到主屏幕按钮和分享按钮样式 */
+        .add-to-home-btn, .share-btn {
             background: none;
             border: none;
             cursor: pointer;
@@ -487,20 +487,62 @@
             padding: 0;
             line-height: 1;
         }
-        
-        .add-to-home-btn svg {
+
+        .add-to-home-btn svg, .share-btn svg {
             transition: all 0.3s ease;
             fill: url(#gradient);
         }
-        
-        .add-to-home-btn:hover {
+
+        .add-to-home-btn:hover, .share-btn:hover {
             transform: translateY(-2px);
             opacity: 1;
             filter: drop-shadow(0 4px 10px rgba(102, 126, 234, 0.3));
         }
-        
-        .add-to-home-btn:hover svg {
+
+        .add-to-home-btn:hover svg, .share-btn:hover svg {
             fill: url(#gradientHover);
+        }
+
+        /* Toast 提示样式 */
+        .toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .toast-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .toast {
+                font-size: 14px;
+                padding: 18px 30px;
+            }
+
+            .toast-icon {
+                font-size: 35px;
+            }
         }
     </style>
 </head>
@@ -744,7 +786,14 @@
                     </linearGradient>
                 </defs>
             </svg>
-            
+
+            <!-- 分享按钮 -->
+            <button id="shareBtn" class="author share-btn" title="分享链接">
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" fill="url(#gradient)"/>
+                </svg>
+            </button>
+
             <a href="https://x.com/Wolfy_XBT" target="_blank" class="author">
                 <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -773,7 +822,70 @@
         // PWA 添加到主屏幕功能
         let deferredPrompt;
         const addToHomeBtn = document.getElementById('addToHomeBtn');
-        
+        const shareBtn = document.getElementById('shareBtn');
+
+        // 显示 Toast 提示
+        function showToast() {
+            const toast = document.getElementById('shareToast');
+            if (toast) {
+                // 显示 toast
+                toast.classList.add('show');
+
+                // 3秒后自动隐藏
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // 分享按钮功能
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async () => {
+                const shareText = '快来跟我一起使用价值观纠正器：https://wolfyxbt.github.io/ValuesCorrector/';
+
+                try {
+                    // 尝试使用现代 Clipboard API
+                    await navigator.clipboard.writeText(shareText);
+
+                    // 复制成功，显示 toast 提示
+                    showToast();
+
+                    // 添加按钮动画效果
+                    shareBtn.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        shareBtn.style.transform = '';
+                    }, 200);
+
+                    console.log('✅ 分享链接已复制到剪贴板');
+                } catch (err) {
+                    console.error('复制失败:', err);
+
+                    // 降级方案：使用传统方法
+                    const textArea = document.createElement('textarea');
+                    textArea.value = shareText;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-999999px';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+
+                    try {
+                        const success = document.execCommand('copy');
+                        document.body.removeChild(textArea);
+
+                        if (success) {
+                            // 复制成功，显示 toast
+                            showToast();
+                        } else {
+                            alert('❌ 复制失败，请手动复制：\n\n' + shareText);
+                        }
+                    } catch (err2) {
+                        document.body.removeChild(textArea);
+                        alert('❌ 复制失败，请手动复制：\n\n' + shareText);
+                    }
+                }
+            });
+        }
+
         // 监听beforeinstallprompt事件
         window.addEventListener('beforeinstallprompt', (e) => {
             console.log('PWA安装提示事件触发');
@@ -1224,14 +1336,47 @@
             }
         }
         
-        // 先设置事件监听器
-        setupBasicEventListeners();
-        
-        // 然后恢复状态
-        restoreState();
-        
-        // 页面加载时获取汇率，加载完成后重新计算
-        loadRates().then(() => {
+        // 检测 localStorage 是否可用
+        function checkLocalStorage() {
+            try {
+                const testKey = '__localStorage_test__';
+                localStorage.setItem(testKey, 'test');
+                localStorage.removeItem(testKey);
+                console.log('✅ localStorage 可用');
+                return true;
+            } catch (e) {
+                console.error('❌ localStorage 不可用:', e);
+                alert('浏览器的 localStorage 功能不可用。状态记忆功能将无法使用。\n\n可能原因：\n1. 使用了隐私/无痕模式\n2. 浏览器设置阻止了本地存储\n3. 使用 file:// 协议打开（请使用 HTTP 服务器）');
+                return false;
+            }
+        }
+
+        // 初始化函数
+        function initApp() {
+            console.log('🚀 开始初始化应用...');
+
+            checkLocalStorage();
+
+            // 先设置事件监听器
+            setupBasicEventListeners();
+
+            // 然后恢复状态
+            restoreState();
+
+            // 在页面关闭前保存状态
+            window.addEventListener('beforeunload', function() {
+                saveState();
+                console.log('🔄 页面关闭前已保存状态');
+            });
+
+            // 在页面失去焦点时也保存状态（用户切换标签页）
+            window.addEventListener('blur', function() {
+                saveState();
+                console.log('🔄 页面失去焦点，已保存状态');
+            });
+
+            // 页面加载时获取汇率，加载完成后重新计算
+            loadRates().then(() => {
             console.log('汇率加载完成，准备设置转换功能');
             
             // 初始化所有select元素的logo显示
@@ -1255,14 +1400,24 @@
                 }
             }
         });
-        
+        }
+
+        // 确保 DOM 加载后执行初始化
+        if (document.readyState === 'loading') {
+            // DOM 还在加载，等待 DOMContentLoaded 事件
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            // DOM 已经加载完成，直接执行
+            initApp();
+        }
+
         // 保存状态到本地存储
         function saveState() {
             const state = {};
             for (let i = 1; i <= 6; i++) {
                 state[`amount${i}`] = document.getElementById(`amount${i}`).value;
                 state[`currency${i}`] = document.getElementById(`currency${i}`).value;
-                
+
                 // 保存自定义代币信息
                 const select = document.getElementById(`currency${i}`);
                 const customOption = select ? select.querySelector('option[value="CUSTOM"]') : null;
@@ -1279,28 +1434,49 @@
             state.lastInputField = lastInputField; // 保存最后输入的栏位
             state.customTokens = customTokens ? Array.from(customTokens.entries()) : []; // 保存自定义代币数据
             localStorage.setItem('valueConverterState', JSON.stringify(state));
+            console.log('✅ 状态已保存:', state);
         }
         
         // 从本地存储恢复状态
         function restoreState() {
             const savedState = localStorage.getItem('valueConverterState');
+            console.log('🔍 尝试恢复状态，localStorage 内容:', savedState);
             if (savedState) {
                 try {
                     const state = JSON.parse(savedState);
-                    
+                    console.log('📦 解析后的状态:', state);
+
                     // 恢复自定义代币数据
                     if (state.customTokens && Array.isArray(state.customTokens)) {
                         customTokens = new Map(state.customTokens);
                     }
-                    
+
                     for (let i = 1; i <= 6; i++) {
+                        const amountElement = document.getElementById(`amount${i}`);
+                        const selectElement = document.getElementById(`currency${i}`);
+
+                        console.log(`🔧 处理第 ${i} 个字段:`, {
+                            savedAmount: state[`amount${i}`],
+                            savedCurrency: state[`currency${i}`],
+                            currentAmount: amountElement ? amountElement.value : 'null',
+                            currentCurrency: selectElement ? selectElement.value : 'null'
+                        });
+
                         if (state[`amount${i}`]) {
-                            document.getElementById(`amount${i}`).value = state[`amount${i}`];
+                            amountElement.value = state[`amount${i}`];
+                            console.log(`  ✅ 金额已恢复为: ${state[`amount${i}`]}`);
                         }
                         if (state[`currency${i}`]) {
-                            document.getElementById(`currency${i}`).value = state[`currency${i}`];
+                            const oldValue = selectElement.value;
+                            selectElement.value = state[`currency${i}`];
+                            console.log(`  ✅ 货币已从 ${oldValue} 恢复为: ${selectElement.value}`);
+
+                            // 验证设置是否成功
+                            if (selectElement.value !== state[`currency${i}`]) {
+                                console.error(`  ❌ 警告：货币设置失败！尝试设置为 ${state[`currency${i}`]}，但实际值为 ${selectElement.value}`);
+                            }
                         }
-                        
+
                         // 恢复自定义代币选项的属性
                         if (state[`customToken${i}`]) {
                             const select = document.getElementById(`currency${i}`);
@@ -1315,12 +1491,12 @@
                             }
                         }
                     }
-                    
+
                     // 恢复最后输入的栏位
                     if (state.lastInputField) {
                         lastInputField = state.lastInputField;
                     }
-                    
+
                     // 恢复自定义代币的外部显示
                     for (let i = 1; i <= 6; i++) {
                         const select = document.getElementById(`currency${i}`);
@@ -1328,11 +1504,13 @@
                             updateSelectDisplay(select);
                         }
                     }
-                    
-                    console.log('状态已恢复:', state);
+
+                    console.log('✅ 状态已恢复:', state);
                 } catch (error) {
-                    console.log('恢复状态失败:', error);
+                    console.log('❌ 恢复状态失败:', error);
                 }
+            } else {
+                console.log('⚠️ 没有找到保存的状态');
             }
         }
         
@@ -2142,6 +2320,12 @@
         }
         
     </script>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div id="shareToast" class="toast">
+        <div class="toast-icon">✅</div>
+        <div>网站链接复制成功，快分享给你的朋友吧</div>
     </div>
 
     <!-- 自定义代币弹窗 -->
